@@ -15,6 +15,7 @@ html {
 
 body {
   font-family: "Ruhl", sans-serif;
+  animation: opening 1s ease-in-out;
 }
 
 //Typography
@@ -80,5 +81,14 @@ button {
   &:hover {
     //background: $secondary-color;
     font-size: 2.6rem;
+  }
+}
+
+@keyframes opening{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
   }
 }
