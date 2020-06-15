@@ -1,0 +1,26 @@
+// Nav
+.main-header {
+  //box-shadow: 0px 10px 10px rgba(0,0,0,.1);
+  box-shadow: 0px 10px 10px transparentize($black, 0.9);
+  z-index: 5;
+  position: relative;
+
+  nav {
+    width: 90%;
+    min-height: 10vh;
+    margin: auto;
+    padding: 2rem 0rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    flex: 1 1 20rem;
+  }
+
+  #logo {
+    flex: 1 1 20rem;
+  }
+}

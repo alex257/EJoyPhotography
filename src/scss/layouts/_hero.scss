@@ -1,0 +1,55 @@
+.hero{
+    min-height: 90vh;
+    width: 95%;
+    margin: 0 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+
+    &__introduction{
+    flex: 2 1 40rem;
+    text-align: center;
+
+    p{
+        padding: 5rem 10rem;
+    }
+
+    h2{
+        padding: 3rem;
+    }
+
+    a{
+        padding: 2rem 8rem;
+        border: 3px solid black;
+        margin-bottom: 4rem;
+    }
+    }
+    &__images{
+        flex: 1 1 40rem;
+        background: linear-gradient(#dad8dd, #dad1d4);
+        position: relative;
+        z-index: 1;
+
+        &--elena{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .plant{
+            position: absolute;
+            bottom: 0;
+            left: -20%;
+            z-index: -1;
+
+        }
+
+        .plant2{
+            left: 40%;
+        }
+    }
+
+
+
+}
