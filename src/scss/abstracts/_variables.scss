@@ -5,7 +5,6 @@ $primary-color: #414141;
 $secondary-color: #906272;
 $text-color: #525252;
 
-
 //TYPOGRAPHY
 $header1: calc(2rem + 1vw);
 $header2: calc(3.5rem + 1vw);
@@ -13,4 +12,13 @@ $header3: calc(3rem + 1vw);
 $header4: calc(2.4rem + 1vw);
 
 $text: calc(1.5rem + 1vw);
-$big: calc(2.4rem + 1vw);
+$big: calc(6rem + 1vw);
+
+@media screen and (min-width: 1700px) {
+  $header1: 3rem;
+  $header2: 4.5rem;
+  $header3: 3.5rem;
+  $header4: 2.5rem;
+  $text: 2.5rem;
+  $big: 6rem;
+}

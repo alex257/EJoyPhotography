@@ -6,12 +6,23 @@
   flex-wrap: wrap;
   overflow: hidden;
 
+  @media screen and (max-width: 842px) {
+    width: 100%;
+  }
+
   &__introduction {
     flex: 2 1 40rem;
     text-align: center;
+    @media screen and (max-width: 842px) {
+      height: 55vh;
+    }
 
     p {
       padding: 5rem 10rem;
+      color: $text-color;
+      @media screen and (max-width: 842px) {
+        padding: 5rem 3rem;
+      }
     }
 
     h2 {
@@ -37,12 +48,14 @@
     }
 
     .plant {
+      max-height: 80%;
       position: absolute;
       bottom: 0;
       left: -20%;
       z-index: -1;
       transform: translateY(10%) rotateZ(-10deg) rotateX(-90deg);
-      animation: plant-entrance 1.5s ease-in-out 0.5s forwards, plant-shake 2.5s infinite ease alternate-reverse 2s;
+      animation: plant-entrance 1.5s ease-in-out 0.5s forwards,
+        plant-shake 2.5s infinite ease alternate-reverse 2s;
       transform-origin: button;
     }
 

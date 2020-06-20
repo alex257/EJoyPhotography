@@ -1,0 +1,47 @@
+.about {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__image {
+    flex: 2 1 40rem;
+    position: relative;
+
+    h5 {
+      position: absolute;
+      letter-spacing: 2rem;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -10%);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    background: $primary-color;
+    color: $white;
+    flex: 2 1 40rem;
+    justify-content: space-around;
+
+    div {
+      padding: 3rem 8rem;
+      @media screen and (max-width: 842px) {
+          padding: 3rem 3rem;
+      }
+    }
+
+    h2{
+       font-family: "Vibes"; 
+       padding: 4rem;
+    }
+    h3 {
+      padding: 3rem 0rem;
+      font-family: "Ruhl Medium";
+    }
+  }
+}
