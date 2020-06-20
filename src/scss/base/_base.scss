@@ -8,6 +8,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
   @media screen and (max-width: 932px) {
     font-size: 45%;
   }

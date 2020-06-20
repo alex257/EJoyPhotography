@@ -2,7 +2,8 @@ const gulp = require("gulp"),
   sass = require("gulp-sass"),
   browserSync = require("browser-sync").create(),
   autoprefixer = require("gulp-autoprefixer"),
-  gulpCopy = require("gulp-copy");
+  gulpCopy = require("gulp-copy"),
+  terser = require("gulp-terser");
 
 function style() {
   
@@ -25,6 +26,17 @@ function style() {
     .pipe(browserSync.stream());
 }
 
+function js() {
+  return gulp
+    .src("src/js/**/*.js")
+    .pipe(sourcemaps.init())
+    .pipe(terser())
+    .pipe(sourcemaps.write())
+    
+    .pipe(gulp.dest("dist/js"));
+}
+
+
 function copyHtml() {
   return gulp
     .src("src/*.html")
@@ -46,13 +58,13 @@ function copyFonts() {
     .pipe(gulp.dest("dist/fonts"));
 }
 
-/*function js() {
+function js() {
   return gulp
     .src("src/js/*.js")
     .pipe(browserSync.stream())
     .pipe(gulp.dest("dist/js/"));
 }
-*/
+
 function watch() {
   browserSync.init({
     server: "./dist"
@@ -64,7 +76,7 @@ function watch() {
   gulp.watch("src/img/*.{gif,jpg,png,svg}", copyImages);
   gulp.watch("src/fonts/*.{txt,ttf}", copyFonts);
   //gulp.watch("src/icons/*.{gif,jpg,png,svg}", copyIcons);
-  //gulp.watch("src/js/*.js").on("change", browserSync.reload);
+  gulp.watch("src/js/*.js").on("change", browserSync.reload);
 }
 
 exports.style = style;
@@ -72,9 +84,10 @@ exports.copyHtml = copyHtml;
 exports.copyImages = copyImages;
 //exports.copyIcons = copyIcons;
 exports.copyFonts = copyFonts;
+exports.js = js;
 exports.watch = watch;
 exports.default = build;
 
-var build = gulp.parallel(style, copyHtml, copyImages, copyFonts, watch);
+var build = gulp.parallel(style, copyHtml, copyImages, copyFonts, js,watch);
 gulp.task(build);
 gulp.task("default", build);
