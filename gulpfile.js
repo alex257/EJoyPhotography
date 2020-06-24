@@ -6,24 +6,25 @@ const gulp = require("gulp"),
   terser = require("gulp-terser");
 
 function style() {
-  
-  return gulp
-   // .src("src/scss/**/*.scss", { 
-    .src("src/scss/*.scss", { 
-      sourcemaps: true
-    })
-
-    .pipe(sass().on("error", sass.logError))
-
-    .pipe(
-      autoprefixer({
-        cascade: false
+  return (
+    gulp
+      // .src("src/scss/**/*.scss", {
+      .src("src/scss/*.scss", {
+        sourcemaps: true,
       })
-    )
 
-    .pipe(gulp.dest("dist/css"))
+      .pipe(sass().on("error", sass.logError))
 
-    .pipe(browserSync.stream());
+      .pipe(
+        autoprefixer({
+          cascade: false,
+        })
+      )
+
+      .pipe(gulp.dest("dist/css"))
+
+      .pipe(browserSync.stream())
+  );
 }
 
 function js() {
@@ -32,10 +33,9 @@ function js() {
     .pipe(sourcemaps.init())
     .pipe(terser())
     .pipe(sourcemaps.write())
-    
+
     .pipe(gulp.dest("dist/js"));
 }
-
 
 function copyHtml() {
   return gulp
@@ -53,9 +53,7 @@ function copyImages() {
 }*/
 
 function copyFonts() {
-  return gulp
-    .src("src/fonts/*.{txt,ttf}")
-    .pipe(gulp.dest("dist/fonts"));
+  return gulp.src("src/fonts/*.{txt,ttf}").pipe(gulp.dest("dist/fonts"));
 }
 
 function js() {
@@ -67,7 +65,7 @@ function js() {
 
 function watch() {
   browserSync.init({
-    server: "./dist"
+    server: "./dist",
   });
 
   gulp.watch("src/scss/**/*.scss", style);
@@ -88,6 +86,6 @@ exports.js = js;
 exports.watch = watch;
 exports.default = build;
 
-var build = gulp.parallel(style, copyHtml, copyImages, copyFonts, js,watch);
+var build = gulp.parallel(style, copyHtml, copyImages, copyFonts, js, watch);
 gulp.task(build);
 gulp.task("default", build);
